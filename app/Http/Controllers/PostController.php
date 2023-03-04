@@ -44,17 +44,23 @@ class PostController extends Controller
             'description' => 'required',
             'category_id' => 'required',
         ]);
-        
-        
+
+
         $post = Post::create($formData);
         $post->categories()->attach($formData['category_id']);
 
+        //this also worked
         // $post = new Post();
         // $post->title = $request->title;
         // $post->description = $request->description;
         // $post->save();
 
-        // $post->categories()->attach($request->category_id);
+        // $data = $request->category_id;
+
+        // dd($data);
+
+        // $post->categories()->attach($data);
+
         return redirect()->route('post.index');
     }
 
