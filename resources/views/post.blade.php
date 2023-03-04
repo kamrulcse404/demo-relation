@@ -13,14 +13,14 @@
                     <th>SL</th>
                     <th>Title</th>
                     <th>Description</th>
-                    <th>Category</th>
+                    {{-- <th>Category</th> --}}
                 </tr>
                 @foreach ($posts as $post)
                     <tr>
                         <td>{{ $post->id }}</td>
                         <td>{{ $post->title }}</td>
                         <td>{{ $post->description }}</td>
-                        <td>{{ $post->category->name }}</td>
+                        {{-- <td>{{ $post->category->name }}</td> --}}
                     </tr>
                 @endforeach
             </table>

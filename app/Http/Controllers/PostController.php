@@ -38,14 +38,24 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
+        // dd($request->all());
         $formData = $request->validate([
             'title' => 'required',
             'description' => 'required',
             'category_id' => 'required',
         ]);
+        
+        
+        $post = Post::create($formData);
+        $post->categories()->attach($formData['category_id']);
 
-        Post::create($formData);
-        // return redirect()->route('post.index');
+        // $post = new Post();
+        // $post->title = $request->title;
+        // $post->description = $request->description;
+        // $post->save();
+
+        // $post->categories()->attach($request->category_id);
+        return redirect()->route('post.index');
     }
 
     /**

@@ -2,6 +2,9 @@
 
 @section('content')
     <div class="card mt-4">
+        <div class="card-header">
+            <a href="{{ route('category.index') }}" class="btn btn-primary">Categories</a>
+        </div>
         <div class="card-body">
             <form action="{{ route('category.store') }}" method="POST">
                 @csrf
