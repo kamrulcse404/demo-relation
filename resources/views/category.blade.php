@@ -1,7 +1,6 @@
 @extends('welcome')
 
 @section('content')
-
     <div class="card mt-4">
         <div class="card-header">
             <a class="btn btn-primary" href="{{ route('category.create') }}">Add Category</a>
@@ -17,6 +16,13 @@
                     <tr>
                         <td>{{ $category->id }}</td>
                         <td>{{ $category->name }}</td>
+                        <td>
+                            <form action="{{ route('category.destroy', $category->id) }}" method="post">
+                                @csrf
+                                @method('delete')
+                                <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure?')">Delete</button>
+                            </form>
+                        </td>
                     </tr>
                 @endforeach
             </table>

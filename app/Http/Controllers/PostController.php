@@ -15,9 +15,12 @@ class PostController extends Controller
      */
     public function index()
     {
-        // $posts = Post::all();
+        // $posts = Post::all(); or
         $posts = Post::with('categories')->get();
         return view('post', compact('posts'));
+        
+        // $categories = Category::with('posts')->get();
+        // return view('post', compact('categories'));
     }
 
     /**
@@ -84,7 +87,11 @@ class PostController extends Controller
      */
     public function edit($id)
     {
-        //
+        $categories = Category::all();
+        $post = Post::find($id);
+        $category = $post->categories;
+        // dd($category);
+        return view('post_edit', compact('categories', 'post', 'category'));
     }
 
     /**

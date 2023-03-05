@@ -14,6 +14,7 @@
                     <th>Title</th>
                     <th>Description</th>
                     <th>Category</th>
+                    <th>Action</th>
                 </tr>
                 @foreach ($posts as $post)
                     <tr>
@@ -23,9 +24,29 @@
                         @foreach ($post->categories as $category)
                             <td><span class="badge bg-secondary">{{ $category->name }}</span></td>
                         @endforeach
+                        <td>
+                            <a class="btn btn-primary" href="{{ route('post.edit', $post->id) }}">Edit</a>
+                        </td>
                     </tr>
                 @endforeach
             </table>
+
+            {{-- <table class="table">
+                <tr>
+                    <th>SL</th>
+                    <th>Name</th>
+                    <th>Posts</th>
+                </tr>
+                @foreach ($categories as $category)
+                    <tr>
+                        <td>{{ $category->id }}</td>
+                        <td>{{ $category->name }}</td>
+                        @foreach ($category->posts as $post)
+                            <td><span class="badge bg-secondary">{{ $post->title }}</span></td>
+                        @endforeach
+                    </tr>
+                @endforeach
+            </table> --}}
         </div>
     </div>
 @endsection
