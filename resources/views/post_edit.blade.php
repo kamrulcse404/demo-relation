@@ -22,9 +22,9 @@
                     <div class="form-group mb-3">
                         <select class="js-example-basic-multiple form-control" name="category_id[]" multiple="multiple">
                             @foreach ($categories as $category)
-                                <option value="{{ $category->id }}" >{{ $category->name }}</option>
+                                <option value="{{ $category->id }}" {{ in_array($category->id, $post->categories->pluck('id')->toArray()) ? 'selected' : '' }}>{{ $category->name }}</option>
                             @endforeach
-                        </select>                        
+                        </select> 
                     </div>  
                 </div>
                 <button type="submit" class="btn btn-primary mt-3">Update Post</button>
