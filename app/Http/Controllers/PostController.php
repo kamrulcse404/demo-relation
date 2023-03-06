@@ -131,6 +131,10 @@ class PostController extends Controller
      */
     public function destroy($id)
     {
-        
+        // dd('hello');
+        $post = Post::find($id);
+        $post->categories()->detach();
+        $post->delete();
+        return redirect()->route('post.index');
     }
 }

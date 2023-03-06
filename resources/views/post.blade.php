@@ -25,7 +25,12 @@
                             <td><span class="badge bg-secondary">{{ $category->name }}</span></td>
                         @endforeach
                         <td>
-                            <a class="btn btn-primary" href="{{ route('post.edit', $post->id) }}">Edit</a>
+                            <form action="{{ route('post.destroy', $post->id) }}" method="POST">
+                                @csrf
+                                @method('DELETE')
+                                <a class="btn btn-primary" href="{{ route('post.edit', $post->id) }}">Edit</a>
+                                <button type="submit" class="btn btn-danger">Delete</button>
+                            </form>
                         </td>
                     </tr>
                 @endforeach
