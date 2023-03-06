@@ -29,3 +29,4 @@ Route::get('/posts', [PostController::class, 'index'])->name('post.index');
 Route::get('/post-create', [PostController::class, 'create'])->name('post.create');
 Route::post('/post-store', [PostController::class, 'store'])->name('post.store');
 Route::get('/post-edit/{id}', [PostController::class, 'edit'])->name('post.edit');
+Route::put('/post-update/{id}', [PostController::class, 'update'])->name('post.update');

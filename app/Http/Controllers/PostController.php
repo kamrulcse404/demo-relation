@@ -102,7 +102,25 @@ class PostController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        // dd($request->all());
+        // $formData1 = $request->validate([
+        //     'title' => 'required',
+        //     'description' => 'required',
+        //     'category_id' => 'required',
+        // ]);
+
+        $formData = $request->validate([
+            'title' => 'required',
+            'description' => 'required',
+        ]);
+
+        Post::where('id', $id)->update($formData);
+        $formData['category_id'] = $request->category_id;
+        $post = Post::find($id);
+        $post->categories()->sync($formData['category_id']);
+
+        return redirect()->route('post.index');
+
     }
 
     /**
@@ -113,6 +131,6 @@ class PostController extends Controller
      */
     public function destroy($id)
     {
-        //
+        
     }
 }

@@ -6,8 +6,9 @@
             <a href="{{ route('post.index') }}" class="btn btn-primary">Posts</a>
         </div>
         <div class="card-body">
-            <form action="{{ route('post.store') }}" method="POST">
+            <form action="{{ route('post.update', $post->id) }}" method="POST">
                 @csrf
+                @method('PUT')
                 <div class="row">
                     <div class="form-group">
                         <label for="title" class="mb-3">Post Title</label>
